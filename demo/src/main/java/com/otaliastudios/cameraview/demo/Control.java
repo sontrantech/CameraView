@@ -39,7 +39,8 @@ public enum Control {
     HSCROLL("Horizontal scroll gesture", false),
     VSCROLL("Vertical scroll gesture", false),
     TAP("Single tap gesture", false),
-    LONG_TAP("Long tap gesture", true);
+    LONG_TAP("Long tap gesture", true),
+    USE_DEVICE_ORIENTATION("Use device orientation", true);
 
     private String name;
     private boolean last;
@@ -73,7 +74,9 @@ public enum Control {
                     list.add(i);
                 }
                 return list;
-            case CROP_OUTPUT: return Arrays.asList(true, false);
+            case CROP_OUTPUT:
+            case USE_DEVICE_ORIENTATION:
+                return Arrays.asList(true, false);
             case SESSION: return options.getSupportedControls(SessionType.class);
             case FLASH: return options.getSupportedControls(Flash.class);
             case WHITE_BALANCE: return options.getSupportedControls(WhiteBalance.class);
@@ -123,11 +126,13 @@ public enum Control {
             case VSCROLL: return view.getGestureAction(Gesture.SCROLL_VERTICAL);
             case TAP: return view.getGestureAction(Gesture.TAP);
             case LONG_TAP: return view.getGestureAction(Gesture.LONG_TAP);
+            case USE_DEVICE_ORIENTATION: return view.getUseDeviceOrientation();
+
         }
         return null;
     }
 
-    public void applyValue(CameraView camera, Object value) {
+    public void applyValue(final CameraView camera, final Object value) {
         switch (this) {
             case WIDTH:
                 camera.getLayoutParams().width = (int) value;
@@ -163,6 +168,9 @@ public enum Control {
                 break;
             case LONG_TAP:
                 camera.mapGesture(Gesture.LONG_TAP, (GestureAction) value);
+                break;
+            case USE_DEVICE_ORIENTATION:
+                camera.setUseDeviceOrientation((Boolean) value);
                 break;
         }
     }

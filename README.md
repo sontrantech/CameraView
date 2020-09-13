@@ -12,7 +12,7 @@ addressing most of the common issues and needs, and still leaving you with flexi
 See [CHANGELOG](https://github.com/natario1/CameraView/blob/master/CHANGELOG.md).
 
 ```groovy
-compile 'com.otaliastudios:cameraview:1.6.1'
+compile 'com.otaliastudios:cameraview:1.6.1.1'
 ```
 
 Make sure your project repositories include the `jcenter()`:
@@ -418,7 +418,8 @@ Most camera parameters can be controlled through XML attributes or linked method
     app:cameraAudio="on"
     app:cameraPlaySounds="true"
     app:cameraVideoMaxSize="0"
-    app:cameraVideoMaxDuration="0"/>
+    app:cameraVideoMaxDuration="0"
+    app:cameraUseDeviceOrientation="true"/>
 ```
 
 |XML Attribute|Method|Values|Default Value|
@@ -437,6 +438,7 @@ Most camera parameters can be controlled through XML attributes or linked method
 |[`cameraPlaySounds`](#cameraplaysounds)|`setPlaySounds()`|`true` `false`|`true`|
 |[`cameraVideoMaxSize`](#cameravideomaxsize)|`setVideoMaxSize()`|number|`0`|
 |[`cameraVideoMaxDuration`](#cameravideomaxduration)|`setVideoMaxDuration()`|number|`0`|
+|[`cameraUseDeviceOrientation`](#cameraUseDeviceOrientation)|`setUseDeviceOrientation()`|boolean |`true` `false`|`true`|
 
 #### cameraSessionType
 
@@ -592,6 +594,18 @@ Defaults to unlimited duration. Use 0 or negatives to disable.
 ```java
 cameraView.setVideoMaxDuration(100000);
 cameraView.setVideoMaxDuration(0); // Disable
+```
+
+#### cameraUseDeviceOrientation
+
+Controls whether we should consider the device orientation for picture and video outputs.
+This defaults to true, but can be set to false for specific usages, where you don't want the
+output to be rotated based on the device rotation at the moment of capturing.
+Defaults to true.
+
+```java
+cameraView.setUseDeviceOrientation(true); // rotate media 
+cameraView.setUseDeviceOrientation(false); // don't
 ```
 
 ## Frame Processing

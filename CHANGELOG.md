@@ -1,6 +1,12 @@
+## v1.6.2
+
+This is an extended version based on natario1's v1.6.1, to keep Android support libraries as its dependencies and fix existing issues.
+
+- New: `cameraUseDeviceOrientation` XML attribute and `setUseDeviceOrientation()` method to disable considering the device orientation for outputs. ([#497][497])
+
 ## v1.6.1
 
-This is the last release before v2.
+This is the last release of natario1 before his v2.
 
 - Fixed: crash when using TextureView in API 28, thanks to [@Keyrillanskiy][Keyrillanskiy] ([#297][297])
 - Fixed: restore Frame Processor callbacks after taking videos, thanks to [@stefanJi][stefanJi] ([#344][344])
