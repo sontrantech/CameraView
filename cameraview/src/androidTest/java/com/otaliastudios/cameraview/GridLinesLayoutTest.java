@@ -1,4 +1,4 @@
-package com.otaliastudios.cameraview;
+package com.sontrantech.cameraview;
 
 
 import android.graphics.Canvas;

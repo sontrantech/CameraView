@@ -1,10 +1,11 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven-publish'
 
 // Required by bintray
-version = '1.6.1'
-group = 'com.otaliastudios'
+version = '1.6.2'
+group = 'com.sontrantech'
 
 //region android dependencies
 
@@ -18,6 +19,12 @@ android {
         versionCode 1
         versionName project.version
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    repositories {
+        maven {
+            url 'https://maven.google.com/'
+        }
     }
 
     buildTypes {
@@ -39,8 +46,8 @@ android {
 }
 
 dependencies {
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'org.mockito:mockito-core:1.10.19'
+    testImplementation 'junit:junit:4.13'
+    testImplementation 'org.mockito:mockito-core:2.28.2'
 
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
@@ -57,13 +64,42 @@ dependencies {
 
 //region bintray
 
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId project.group
+            artifactId 'cameraview'
+            version project.version
+            artifact "$buildDir/outputs/aar/cameraview-release.aar" //aar artifact you want to publish
+
+            //generate pom nodes for dependencies
+            pom.withXml {
+                def dependenciesNode = asNode().appendNode('dependencies')
+                configurations.compile.allDependencies.each { dependency ->
+                    def dependencyNode = dependenciesNode.appendNode('dependency')
+                    dependencyNode.appendNode('groupId', dependency.group)
+                    dependencyNode.appendNode('artifactId', dependency.name)
+                    dependencyNode.appendNode('version', dependency.version)
+                }
+            }
+        }
+    }
+
+    //publish to filesystem repo
+    repositories{
+        maven {
+            url "$buildDir/repo"
+        }
+    }
+}
+
 install {
     repositories.mavenInstaller {
         pom.project {
             name 'CameraView'
             description 'A well documented, high-level Android interface that makes capturing pictures ' +
                     'and videos easy, addressing most of the common issues and needs.'
-            url 'https://github.com/natario1/CameraView'
+            url 'https://github.com/sontrantech/CameraView'
 
             packaging 'aar'
             groupId project.group
@@ -77,15 +113,15 @@ install {
                 }
             }
             scm {
-                connection 'https://github.com/natario1/CameraView.git'
-                developerConnection 'https://github.com/natario1/CameraView.git'
-                url 'https://github.com/natario1/CameraView'
+                connection 'https://github.com/sontrantech/CameraView.git'
+                developerConnection 'https://github.com/sontrantech/CameraView.git'
+                url 'https://github.com/sontrantech/CameraView'
 
             }
             developers {
                 developer {
-                    id = 'natario'
-                    name 'Natario'
+                    id = 'sontrantech'
+                    name 'Sontrantech'
                 }
             }
         }
@@ -114,7 +150,7 @@ bintray {
         repo = 'android'
         name = 'CameraView'
         licenses = ['Apache-2.0']
-        vcsUrl = 'https://github.com/natario1/CameraView.git'
+        vcsUrl = 'https://github.com/sontrantech/CameraView.git'
         publish = true
         override = true
         version {
@@ -207,7 +243,7 @@ task mergedCoverageReport(type: JacocoReport) {
 
     reports.xml.enabled = true
     reports.html.enabled = true
-    reports.xml.destination = "$reportsDirectory/mergedCoverageReport/report.xml"
+//    reports.xml.destination = "$reportsDirectory/mergedCoverageReport/report.xml"
 }
 
 //endregion

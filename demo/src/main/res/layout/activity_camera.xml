@@ -8,8 +8,7 @@
     android:layout_height="match_parent">
 
     <!-- Camera -->
-    <com.otaliastudios.cameraview.CameraView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <com.sontrantech.cameraview.CameraView
         android:id="@+id/camera"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,7 +26,8 @@
         app:cameraGestureScrollHorizontal="exposureCorrection"
         app:cameraGestureScrollVertical="none"
         app:cameraJpegQuality="100"
-        app:cameraSessionType="picture" />
+        app:cameraSessionType="picture"
+        app:cameraUseDeviceOrientation="true"/>
 
     <!-- Controls -->
     <LinearLayout

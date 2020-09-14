@@ -5,7 +5,7 @@ android {
     // buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.otaliastudios.cameraview.demo"
+        applicationId "com.sontrantech.cameraview.demo"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

@@ -1,4 +1,4 @@
-package com.otaliastudios.cameraview;
+package com.sontrantech.cameraview;
 
 
 import android.content.Context;
@@ -478,9 +478,17 @@ public class CameraViewTest extends BaseTest {
     @Test
     public void testSetPlaySounds() {
         cameraView.setPlaySounds(true);
-        assertEquals(cameraView.getPlaySounds(), true);
+        assertTrue(cameraView.getPlaySounds());
         cameraView.setPlaySounds(false);
-        assertEquals(cameraView.getPlaySounds(), false);
+        assertFalse(cameraView.getPlaySounds());
+    }
+
+    @Test
+    public void testSetUseDeviceOrientation() {
+        cameraView.setUseDeviceOrientation(true);
+        assertTrue(cameraView.getUseDeviceOrientation());
+        cameraView.setUseDeviceOrientation(false);
+        assertFalse(cameraView.getUseDeviceOrientation());
     }
 
     @Test(expected = IllegalArgumentException.class)

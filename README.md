@@ -12,7 +12,7 @@ addressing most of the common issues and needs, and still leaving you with flexi
 See [CHANGELOG](https://github.com/natario1/CameraView/blob/master/CHANGELOG.md).
 
 ```groovy
-compile 'com.otaliastudios:cameraview:1.6.1'
+compile 'com.sontrantech:cameraview:1.6.2'
 ```
 
 Make sure your project repositories include the `jcenter()`:
@@ -85,7 +85,7 @@ See below for a [list of what was done](#roadmap) and [licensing info](#contribu
 To use the CameraView engine, simply add a `CameraView` to your layout:
 
 ```xml
-<com.otaliastudios.cameraview.CameraView
+<com.sontrantech.cameraview.CameraView
     android:id="@+id/camera"
     android:keepScreenOn="true"
     android:layout_width="wrap_content"
@@ -315,7 +315,7 @@ into your bounds, just like what happens with image views.
 
 
 ```xml
-<com.otaliastudios.cameraview.CameraView
+<com.sontrantech.cameraview.CameraView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" />
 ```
@@ -331,7 +331,7 @@ of the internal preview surface, the surface will be cropped to fill the view,
 just like `android:scaleType="centerCrop"` on an `ImageView`.
 
 ```xml
-<com.otaliastudios.cameraview.CameraView
+<com.sontrantech.cameraview.CameraView
     android:layout_width="match_parent"
     android:layout_height="match_parent" />
 ```
@@ -400,7 +400,7 @@ camera.setPictureSize(result);
 Most camera parameters can be controlled through XML attributes or linked methods.
 
 ```xml
-<com.otaliastudios.cameraview.CameraView
+<com.sontrantech.cameraview.CameraView
     android:id="@+id/camera"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -418,7 +418,8 @@ Most camera parameters can be controlled through XML attributes or linked method
     app:cameraAudio="on"
     app:cameraPlaySounds="true"
     app:cameraVideoMaxSize="0"
-    app:cameraVideoMaxDuration="0"/>
+    app:cameraVideoMaxDuration="0"
+    app:cameraUseDeviceOrientation="true"/>
 ```
 
 |XML Attribute|Method|Values|Default Value|
@@ -437,6 +438,7 @@ Most camera parameters can be controlled through XML attributes or linked method
 |[`cameraPlaySounds`](#cameraplaysounds)|`setPlaySounds()`|`true` `false`|`true`|
 |[`cameraVideoMaxSize`](#cameravideomaxsize)|`setVideoMaxSize()`|number|`0`|
 |[`cameraVideoMaxDuration`](#cameravideomaxduration)|`setVideoMaxDuration()`|number|`0`|
+|[`cameraUseDeviceOrientation`](#cameraUseDeviceOrientation)|`setUseDeviceOrientation()`|boolean |`true` `false`|`true`|
 
 #### cameraSessionType
 
@@ -592,6 +594,18 @@ Defaults to unlimited duration. Use 0 or negatives to disable.
 ```java
 cameraView.setVideoMaxDuration(100000);
 cameraView.setVideoMaxDuration(0); // Disable
+```
+
+#### cameraUseDeviceOrientation
+
+Controls whether we should consider the device orientation for picture and video outputs.
+This defaults to true, but can be set to false for specific usages, where you don't want the
+output to be rotated based on the device rotation at the moment of capturing.
+Defaults to true.
+
+```java
+cameraView.setUseDeviceOrientation(true); // rotate media 
+cameraView.setUseDeviceOrientation(false); // don't
 ```
 
 ## Frame Processing

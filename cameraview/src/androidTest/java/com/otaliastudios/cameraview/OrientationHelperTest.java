@@ -1,4 +1,4 @@
-package com.otaliastudios.cameraview;
+package com.sontrantech.cameraview;
 
 
 import android.support.test.filters.SmallTest;
