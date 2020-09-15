@@ -1,7 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
-apply plugin: 'maven-publish'
 
 // Required by bintray
 version = '1.6.2'
@@ -63,138 +60,31 @@ dependencies {
 //endregion
 
 //region bintray
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'CameraView'
 
-publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId project.group
-            artifactId 'cameraview'
-            version project.version
-            artifact "$buildDir/outputs/aar/cameraview-release.aar" //aar artifact you want to publish
+    publishedGroupId = group
+    libraryName = 'CameraView'
+    artifact = 'cameraview'
 
-            //generate pom nodes for dependencies
-            pom.withXml {
-                def dependenciesNode = asNode().appendNode('dependencies')
-                configurations.compile.allDependencies.each { dependency ->
-                    def dependencyNode = dependenciesNode.appendNode('dependency')
-                    dependencyNode.appendNode('groupId', dependency.group)
-                    dependencyNode.appendNode('artifactId', dependency.name)
-                    dependencyNode.appendNode('version', dependency.version)
-                }
-            }
-        }
-    }
+    libraryDescription = 'CameraView is a well documented, high-level library that makes capturing pictures and videos easy, addressing most of the common issues and needs, and still leaving you with flexibility where needed.'
 
-    //publish to filesystem repo
-    repositories{
-        maven {
-            url "$buildDir/repo"
-        }
-    }
+    siteUrl = 'https://github.com/sontrantech/CameraView'
+    gitUrl = 'https://github.com/sontrantech/CameraView.git'
+
+    libraryVersion = version
+
+    developerId = 'sontrantech'
+    developerName = 'Son Tran'
+    developerEmail = 'sontran.tech@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
 }
-
-install {
-    repositories.mavenInstaller {
-        pom.project {
-            name 'CameraView'
-            description 'A well documented, high-level Android interface that makes capturing pictures ' +
-                    'and videos easy, addressing most of the common issues and needs.'
-            url 'https://github.com/sontrantech/CameraView'
-
-            packaging 'aar'
-            groupId project.group
-            artifactId 'cameraview'
-            version project.version
-
-            licenses {
-                license {
-                    name 'The Apache Software License, Version 2.0'
-                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                }
-            }
-            scm {
-                connection 'https://github.com/sontrantech/CameraView.git'
-                developerConnection 'https://github.com/sontrantech/CameraView.git'
-                url 'https://github.com/sontrantech/CameraView'
-
-            }
-            developers {
-                developer {
-                    id = 'sontrantech'
-                    name 'Sontrantech'
-                }
-            }
-        }
-    }
-}
-
-def bintrayUser
-def bintrayKey
-def travis = System.getenv("TRAVIS")
-if (travis) {
-    bintrayUser = System.getenv("BINTRAY_USER")
-    bintrayKey = System.getenv("BINTRAY_KEY")
-} else {
-    Properties props = new Properties()
-    props.load(project.rootProject.file('local.properties').newDataInputStream())
-    bintrayUser = props.getProperty('bintray.user')
-    bintrayKey = props.get('bintray.key')
-}
-
-bintray {
-    // https://github.com/bintray/gradle-bintray-plugin
-    user = bintrayUser
-    key = bintrayKey
-    configurations = ['archives']
-    pkg {
-        repo = 'android'
-        name = 'CameraView'
-        licenses = ['Apache-2.0']
-        vcsUrl = 'https://github.com/sontrantech/CameraView.git'
-        publish = true
-        override = true
-        version {
-            name = project.version
-            desc = 'CameraView v. '+project.version
-            released = new Date()
-            vcsTag = 'v'+project.version
-        }
-    }
-}
-
-//endregion
-
-//region javadoc and sources
-
-// From official sample https://github.com/bintray/bintray-examples/blob/master/gradle-aar-example/build.gradle
-task sourcesJar(type: Jar) {
-    classifier = 'sources'
-    from android.sourceSets.main.java.sourceFiles
-}
-
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    classpath += project.files("${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar")
-    project.android.libraryVariants.all { variant ->
-        if (variant.name == 'release') {
-            classpath += files(variant.javaCompile.classpath)
-        }
-    }
-    exclude '**/BuildConfig.java'
-    exclude '**/R.java'
-    exclude '**/internal/**'
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-artifacts {
-    archives javadocJar
-    archives sourcesJar
-}
+apply from: 'install.gradle'
+apply from: 'bintray.gradle'
 
 //endregion
 
