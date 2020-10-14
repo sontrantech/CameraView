@@ -3,8 +3,8 @@ package com.otaliastudios.cameraview.controls;
 
 import com.otaliastudios.cameraview.CameraView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 /**
  * Audio values indicate whether to record audio stream when record video.

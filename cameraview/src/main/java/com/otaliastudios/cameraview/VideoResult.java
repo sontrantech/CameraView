@@ -11,8 +11,8 @@ import com.otaliastudios.cameraview.size.Size;
 import java.io.File;
 import java.io.FileDescriptor;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 /**
  * Wraps the result of a video recording started by {@link CameraView#takeVideo(File)}.

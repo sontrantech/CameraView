@@ -4,7 +4,7 @@ package com.otaliastudios.cameraview.internal;
 import android.opengl.GLES11Ext;
 import android.opengl.GLES20;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 import com.otaliastudios.cameraview.CameraLogger;
 import com.otaliastudios.cameraview.filter.Filter;

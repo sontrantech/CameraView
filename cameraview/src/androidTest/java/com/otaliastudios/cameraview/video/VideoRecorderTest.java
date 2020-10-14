@@ -1,11 +1,11 @@
 package com.otaliastudios.cameraview.video;
 
 
+import android.support.test.filters.SmallTest;
+import android.support.test.runner.AndroidJUnit4;
+
 import com.otaliastudios.cameraview.BaseTest;
 import com.otaliastudios.cameraview.VideoResult;
-
-import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.filters.SmallTest;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,7 +35,7 @@ public class VideoRecorderTest extends BaseTest {
             }
         };
         recorder.start(result);
-        Mockito.verify(listener,Mockito.times(1) )
+        Mockito.verify(listener, Mockito.times(1))
                 .onVideoRecordingStart();
         recorder.stop(false);
         Mockito.verify(listener, Mockito.times(1))

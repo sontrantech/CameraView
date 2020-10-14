@@ -9,7 +9,7 @@ import com.otaliastudios.cameraview.engine.Camera1Engine;
 import com.otaliastudios.cameraview.internal.CamcorderProfiles;
 import com.otaliastudios.cameraview.size.Size;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 /**
  * A {@link VideoRecorder} that uses {@link MediaRecorder} APIs

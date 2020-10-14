@@ -13,7 +13,7 @@ import com.otaliastudios.cameraview.internal.WorkerHandler;
 import com.otaliastudios.cameraview.size.AspectRatio;
 import com.otaliastudios.cameraview.size.Size;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 import java.io.ByteArrayOutputStream;
 

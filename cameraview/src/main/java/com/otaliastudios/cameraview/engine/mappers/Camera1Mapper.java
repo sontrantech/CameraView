@@ -12,8 +12,8 @@ import com.otaliastudios.cameraview.controls.WhiteBalance;
 import java.util.HashMap;
 import java.util.Map;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 /**
  * A Mapper maps camera engine constants to CameraView constants.

@@ -1,6 +1,6 @@
 package com.otaliastudios.cameraview.filter;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 /**
  * The simplest possible filter that accepts a fragment shader in its constructor.

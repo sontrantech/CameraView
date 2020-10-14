@@ -2,8 +2,8 @@ package com.otaliastudios.cameraview.gesture;
 
 import android.content.Context;
 import android.graphics.PointF;
-import androidx.annotation.NonNull;
-import androidx.annotation.VisibleForTesting;
+import android.support.annotation.NonNull;
+import android.support.annotation.VisibleForTesting;
 
 import android.view.MotionEvent;
 

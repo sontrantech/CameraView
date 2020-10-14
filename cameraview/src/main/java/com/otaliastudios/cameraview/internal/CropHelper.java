@@ -5,7 +5,7 @@ import android.graphics.Rect;
 import com.otaliastudios.cameraview.size.AspectRatio;
 import com.otaliastudios.cameraview.size.Size;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 /**
  * Simply computes the crop between a full size and a desired aspect ratio.

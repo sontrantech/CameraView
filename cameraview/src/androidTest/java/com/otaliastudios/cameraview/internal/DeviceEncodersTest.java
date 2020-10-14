@@ -1,11 +1,9 @@
 package com.otaliastudios.cameraview.internal;
 
-
 import android.media.MediaCodecInfo;
-
-import androidx.annotation.NonNull;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.filters.MediumTest;
+import android.support.annotation.NonNull;
+import android.support.test.filters.MediumTest;
+import android.support.test.runner.AndroidJUnit4;
 
 import com.otaliastudios.cameraview.BaseTest;
 import com.otaliastudios.cameraview.size.AspectRatio;

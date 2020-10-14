@@ -2,7 +2,7 @@ package com.otaliastudios.cameraview.overlay;
 
 import android.graphics.Canvas;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 /**
  * Base interface for overlays.

@@ -3,8 +3,8 @@ package com.otaliastudios.cameraview.frame;
 import android.media.Image;
 import android.os.Build;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 
 @RequiresApi(Build.VERSION_CODES.KITKAT)
 public class ImageFrameManager extends FrameManager<Image> {

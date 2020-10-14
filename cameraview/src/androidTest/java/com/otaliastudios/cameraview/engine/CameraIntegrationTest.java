@@ -7,6 +7,10 @@ import android.graphics.PointF;
 import android.hardware.Camera;
 import android.os.Build;
 import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.test.rule.ActivityTestRule;
+import android.support.test.rule.GrantPermissionRule;
 
 import com.otaliastudios.cameraview.BaseTest;
 import com.otaliastudios.cameraview.CameraException;
@@ -28,20 +32,15 @@ import com.otaliastudios.cameraview.controls.WhiteBalance;
 import com.otaliastudios.cameraview.engine.orchestrator.CameraState;
 import com.otaliastudios.cameraview.frame.Frame;
 import com.otaliastudios.cameraview.frame.FrameProcessor;
-import com.otaliastudios.cameraview.size.SizeSelectors;
-import com.otaliastudios.cameraview.tools.Emulator;
-import com.otaliastudios.cameraview.tools.Op;
 import com.otaliastudios.cameraview.internal.WorkerHandler;
 import com.otaliastudios.cameraview.overlay.Overlay;
 import com.otaliastudios.cameraview.size.Size;
+import com.otaliastudios.cameraview.size.SizeSelectors;
+import com.otaliastudios.cameraview.tools.Emulator;
+import com.otaliastudios.cameraview.tools.Op;
 import com.otaliastudios.cameraview.tools.Retry;
 import com.otaliastudios.cameraview.tools.RetryRule;
 import com.otaliastudios.cameraview.tools.SdkExclude;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.test.rule.ActivityTestRule;
-import androidx.test.rule.GrantPermissionRule;
 
 import org.junit.After;
 import org.junit.Before;
@@ -92,6 +91,18 @@ public abstract class CameraIntegrationTest<E extends CameraBaseEngine> extends 
     protected E controller;
     private CameraListener listener;
     private Op<Throwable> error;
+
+    @SuppressWarnings("SameParameterValue")
+    private static long estimateVideoBitRate(@NonNull Size size, int frameRate) {
+        // Nasty estimate for a LQ video
+        return Math.round(0.05D * size.getWidth() * size.getHeight() * frameRate);
+    }
+
+    @SuppressWarnings("SameParameterValue")
+    private static long estimateVideoBytes(long videoBitRate, long millis) {
+        // 1.3F accounts for audio.
+        return Math.round((videoBitRate * 1.3F) * (millis / 1000D) / 8D);
+    }
 
     @NonNull
     protected abstract Engine getEngine();
@@ -176,7 +187,8 @@ public abstract class CameraIntegrationTest<E extends CameraBaseEngine> extends 
         // Extra wait for the bind and preview state, so we run tests in a fully operational
         // state. If we didn't do so, we could have null values, for example, in getPictureSize
         // or in getSnapshotSize.
-        while (controller.getState() != CameraState.PREVIEW) {}
+        while (controller.getState() != CameraState.PREVIEW) {
+        }
     }
 
     protected final void closeSync(boolean expectSuccess) {
@@ -280,6 +292,7 @@ public abstract class CameraIntegrationTest<E extends CameraBaseEngine> extends 
     /**
      * Emulators do not respond well to setVideoMaxDuration() with full videos.
      * The mediaRecorder.stop() call can hang forever.
+     *
      * @return true if possible
      */
     protected boolean canSetVideoMaxDuration() {
@@ -287,7 +300,7 @@ public abstract class CameraIntegrationTest<E extends CameraBaseEngine> extends 
     }
 
     protected void takeVideoSync(boolean expectSuccess) {
-        takeVideoSync(expectSuccess,0);
+        takeVideoSync(expectSuccess, 0);
     }
 
     protected void takeVideoSync(boolean expectSuccess, int duration) {
@@ -334,8 +347,10 @@ public abstract class CameraIntegrationTest<E extends CameraBaseEngine> extends 
 
     @SuppressWarnings({"unused", "SameParameterValue"})
     private void takeVideoSnapshotSync(boolean expectSuccess) {
-        takeVideoSnapshotSync(expectSuccess,0);
+        takeVideoSnapshotSync(expectSuccess, 0);
     }
+
+    //region test open/close
 
     private void takeVideoSnapshotSync(boolean expectSuccess, int duration) {
         final Op<Boolean> op = new Op<>();
@@ -370,8 +385,6 @@ public abstract class CameraIntegrationTest<E extends CameraBaseEngine> extends 
         }
     }
 
-    //region test open/close
-
     @Test
     @Retry(emulatorOnly = true)
     @SdkExclude(maxSdkVersion = 22, emulatorOnly = true)
@@ -397,6 +410,11 @@ public abstract class CameraIntegrationTest<E extends CameraBaseEngine> extends 
     public void testCloseTwice() {
         closeSync(false);
     }
+
+    //endregion
+
+    //region test Facing/SessionType
+    // Test things that should reset the camera.
 
     @Test
     @Retry(emulatorOnly = true)
@@ -429,8 +447,8 @@ public abstract class CameraIntegrationTest<E extends CameraBaseEngine> extends 
 
     //endregion
 
-    //region test Facing/SessionType
-    // Test things that should reset the camera.
+    //region test Set Parameters
+    // When camera is open, parameters will be set only if supported.
 
     @Test
     @Retry(emulatorOnly = true)
@@ -469,11 +487,6 @@ public abstract class CameraIntegrationTest<E extends CameraBaseEngine> extends 
         assertTrue("Handles setMode while active", did);
         assertEquals(camera.getMode(), Mode.VIDEO);
     }
-
-    //endregion
-
-    //region test Set Parameters
-    // When camera is open, parameters will be set only if supported.
 
     @Test
     @Retry(emulatorOnly = true)
@@ -598,6 +611,10 @@ public abstract class CameraIntegrationTest<E extends CameraBaseEngine> extends 
         // This also ensures there are no crashes when attaching it to camera parameters.
     }
 
+    //endregion
+
+    //region test takeVideo
+
     @Test
     @Retry(emulatorOnly = true)
     @SdkExclude(maxSdkVersion = 22, emulatorOnly = true)
@@ -637,10 +654,6 @@ public abstract class CameraIntegrationTest<E extends CameraBaseEngine> extends 
             assertEquals(newValue, camera.getPlaySounds());
         }
     }
-
-    //endregion
-
-    //region test takeVideo
 
     @Test(expected = RuntimeException.class)
     @Retry(emulatorOnly = true)
@@ -756,6 +769,10 @@ public abstract class CameraIntegrationTest<E extends CameraBaseEngine> extends 
         waitForVideoResult(true);
     }
 
+    //endregion
+
+    //region startAutoFocus
+
     @Test
     @Retry(emulatorOnly = true)
     @SdkExclude(maxSdkVersion = 25, emulatorOnly = true)
@@ -779,10 +796,6 @@ public abstract class CameraIntegrationTest<E extends CameraBaseEngine> extends 
         waitForVideoResult(true);
     }
 
-    //endregion
-
-    //region startAutoFocus
-
     @Test
     @Retry(emulatorOnly = true)
     @SdkExclude(maxSdkVersion = 22, emulatorOnly = true)
@@ -801,6 +814,10 @@ public abstract class CameraIntegrationTest<E extends CameraBaseEngine> extends 
             assertNull(point);
         }
     }
+
+    //endregion
+
+    //region capture
 
     @Test
     @Retry(emulatorOnly = true)
@@ -823,10 +840,6 @@ public abstract class CameraIntegrationTest<E extends CameraBaseEngine> extends 
     }
 
     protected abstract long getMeteringTimeoutMillis();
-
-    //endregion
-
-    //region capture
 
     @Test
     @Retry(emulatorOnly = true)
@@ -973,6 +986,10 @@ public abstract class CameraIntegrationTest<E extends CameraBaseEngine> extends 
         }
     }
 
+    //endregion
+
+    //region Picture Formats
+
     @Test
     @Retry(emulatorOnly = true)
     @SdkExclude(maxSdkVersion = 22, emulatorOnly = true)
@@ -983,6 +1000,10 @@ public abstract class CameraIntegrationTest<E extends CameraBaseEngine> extends 
         waitForPictureResult(true);
     }
 
+    //endregion
+
+    //region Frame Processing
+
     @Test
     @Retry(emulatorOnly = true)
     @SdkExclude(maxSdkVersion = 22, emulatorOnly = true)
@@ -992,10 +1013,6 @@ public abstract class CameraIntegrationTest<E extends CameraBaseEngine> extends 
         camera.takePictureSnapshot();
         waitForPictureResult(true);
     }
-
-    //endregion
-
-    //region Picture Formats
 
     @SuppressWarnings("ConstantConditions")
     @Test
@@ -1019,10 +1036,6 @@ public abstract class CameraIntegrationTest<E extends CameraBaseEngine> extends 
             assertTrue(isII || isMM);
         }
     }
-
-    //endregion
-
-    //region Frame Processing
 
     private void assert15Frames(@NonNull FrameProcessor mock) throws Exception {
         // Expect 15 frames. Time is very high because currently Camera2 keeps a very low FPS.
@@ -1107,7 +1120,6 @@ public abstract class CameraIntegrationTest<E extends CameraBaseEngine> extends 
         assert15Frames(processor);
     }
 
-
     @Test
     @Retry(emulatorOnly = true)
     @SdkExclude(maxSdkVersion = 25, emulatorOnly = true)
@@ -1116,7 +1128,7 @@ public abstract class CameraIntegrationTest<E extends CameraBaseEngine> extends 
         camera.addFrameProcessor(processor);
         camera.setMode(Mode.VIDEO);
         openSync(true);
-        takeVideoSync(true,4000);
+        takeVideoSync(true, 4000);
         waitForVideoResult(true);
 
         assert15Frames(processor);
@@ -1137,13 +1149,6 @@ public abstract class CameraIntegrationTest<E extends CameraBaseEngine> extends 
         assert15Frames(processor);
     }
 
-    public class FreezeReleaseFrameProcessor implements FrameProcessor {
-        @Override
-        public void process(@NonNull Frame frame) {
-            frame.freeze().release();
-        }
-    }
-
     @Test
     @Retry(emulatorOnly = true)
     @SdkExclude(maxSdkVersion = 22, emulatorOnly = true)
@@ -1162,6 +1167,10 @@ public abstract class CameraIntegrationTest<E extends CameraBaseEngine> extends 
         }
     }
 
+    //endregion
+
+    //region Overlays
+
     @NonNull
     private Op<Boolean> testFrameProcessorFormat(final int format) {
         final Op<Boolean> op = new Op<>();
@@ -1179,10 +1188,6 @@ public abstract class CameraIntegrationTest<E extends CameraBaseEngine> extends 
         return op;
     }
 
-    //endregion
-
-    //region Overlays
-
     @Test
     @Retry(emulatorOnly = true)
     @SdkExclude(maxSdkVersion = 22, emulatorOnly = true)
@@ -1196,6 +1201,8 @@ public abstract class CameraIntegrationTest<E extends CameraBaseEngine> extends 
         verify(overlay, atLeastOnce()).drawsOn(Overlay.Target.PICTURE_SNAPSHOT);
         verify(overlay, times(1)).drawOn(eq(Overlay.Target.PICTURE_SNAPSHOT), any(Canvas.class));
     }
+
+    //endregion
 
     @Test
     @Retry(emulatorOnly = true)
@@ -1211,17 +1218,10 @@ public abstract class CameraIntegrationTest<E extends CameraBaseEngine> extends 
         verify(overlay, atLeastOnce()).drawOn(eq(Overlay.Target.VIDEO_SNAPSHOT), any(Canvas.class));
     }
 
-    //endregion
-
-    @SuppressWarnings("SameParameterValue")
-    private static long estimateVideoBitRate(@NonNull Size size, int frameRate) {
-        // Nasty estimate for a LQ video
-        return Math.round(0.05D * size.getWidth() * size.getHeight() * frameRate);
-    }
-
-    @SuppressWarnings("SameParameterValue")
-    private static long estimateVideoBytes(long videoBitRate, long millis) {
-        // 1.3F accounts for audio.
-        return Math.round((videoBitRate * 1.3F) * (millis / 1000D) / 8D);
+    public class FreezeReleaseFrameProcessor implements FrameProcessor {
+        @Override
+        public void process(@NonNull Frame frame) {
+            frame.freeze().release();
+        }
     }
 }

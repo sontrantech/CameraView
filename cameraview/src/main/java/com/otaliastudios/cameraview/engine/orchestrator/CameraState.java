@@ -1,6 +1,6 @@
 package com.otaliastudios.cameraview.engine.orchestrator;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 public enum CameraState {
     OFF(0), ENGINE(1), BIND(2), PREVIEW(3);

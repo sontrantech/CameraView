@@ -2,8 +2,8 @@ package com.otaliastudios.cameraview.engine.action;
 
 import android.os.Build;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 
 /**
  * A callback for {@link Action} state changes.

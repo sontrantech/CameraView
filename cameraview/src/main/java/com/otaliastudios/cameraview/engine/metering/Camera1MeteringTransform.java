@@ -5,7 +5,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.hardware.Camera;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 import com.otaliastudios.cameraview.CameraLogger;
 import com.otaliastudios.cameraview.engine.offset.Angles;

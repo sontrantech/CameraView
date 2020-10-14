@@ -2,9 +2,8 @@ package com.otaliastudios.cameraview.filter;
 
 
 import android.opengl.GLES20;
-
-import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.filters.SmallTest;
+import android.support.test.filters.SmallTest;
+import android.support.test.runner.AndroidJUnit4;
 
 import com.otaliastudios.cameraview.BaseEglTest;
 import com.otaliastudios.cameraview.filters.AutoFixFilter;

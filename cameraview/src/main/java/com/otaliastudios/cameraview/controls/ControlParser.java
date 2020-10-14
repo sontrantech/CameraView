@@ -5,8 +5,8 @@ import android.content.res.TypedArray;
 
 import com.otaliastudios.cameraview.R;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 /**
  * Parses controls from XML attributes.

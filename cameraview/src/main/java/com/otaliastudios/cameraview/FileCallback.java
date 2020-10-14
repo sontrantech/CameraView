@@ -2,8 +2,8 @@ package com.otaliastudios.cameraview;
 
 import java.io.File;
 
-import androidx.annotation.Nullable;
-import androidx.annotation.UiThread;
+import android.support.annotation.Nullable;
+import android.support.annotation.UiThread;
 
 /**
  * Receives callbacks about a file saving operation.

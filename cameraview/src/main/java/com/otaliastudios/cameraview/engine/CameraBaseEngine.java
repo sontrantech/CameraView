@@ -4,10 +4,10 @@ import android.graphics.PointF;
 import android.graphics.RectF;
 import android.location.Location;
 
-import androidx.annotation.CallSuper;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.VisibleForTesting;
+import android.support.annotation.CallSuper;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
 
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;

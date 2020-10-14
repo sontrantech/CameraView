@@ -3,27 +3,26 @@ package com.otaliastudios.cameraview;
 
 import android.content.Context;
 import android.graphics.PointF;
-
-import androidx.annotation.NonNull;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.filters.MediumTest;
+import android.support.annotation.NonNull;
+import android.support.test.filters.MediumTest;
+import android.support.test.runner.AndroidJUnit4;
 import android.view.ViewGroup;
 
 import com.otaliastudios.cameraview.controls.Audio;
 import com.otaliastudios.cameraview.controls.Engine;
 import com.otaliastudios.cameraview.controls.Preview;
 import com.otaliastudios.cameraview.engine.CameraEngine;
+import com.otaliastudios.cameraview.engine.MockCameraEngine;
 import com.otaliastudios.cameraview.frame.Frame;
 import com.otaliastudios.cameraview.frame.FrameProcessor;
 import com.otaliastudios.cameraview.gesture.Gesture;
 import com.otaliastudios.cameraview.gesture.GestureAction;
-import com.otaliastudios.cameraview.tools.Op;
-import com.otaliastudios.cameraview.engine.MockCameraEngine;
 import com.otaliastudios.cameraview.markers.AutoFocusMarker;
 import com.otaliastudios.cameraview.markers.AutoFocusTrigger;
 import com.otaliastudios.cameraview.markers.MarkerLayout;
-import com.otaliastudios.cameraview.preview.MockCameraPreview;
 import com.otaliastudios.cameraview.preview.CameraPreview;
+import com.otaliastudios.cameraview.preview.MockCameraPreview;
+import com.otaliastudios.cameraview.tools.Op;
 
 import org.junit.After;
 import org.junit.Before;
@@ -31,7 +30,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static junit.framework.Assert.assertNotNull;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Matchers.any;

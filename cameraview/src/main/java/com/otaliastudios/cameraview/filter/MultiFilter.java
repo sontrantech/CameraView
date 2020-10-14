@@ -3,8 +3,8 @@ package com.otaliastudios.cameraview.filter;
 import android.opengl.GLES11Ext;
 import android.opengl.GLES20;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.VisibleForTesting;
+import android.support.annotation.NonNull;
+import android.support.annotation.VisibleForTesting;
 
 import com.otaliastudios.cameraview.size.Size;
 import com.otaliastudios.opengl.core.Egloo;

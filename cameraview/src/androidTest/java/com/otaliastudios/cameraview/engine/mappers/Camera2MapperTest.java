@@ -1,11 +1,9 @@
 package com.otaliastudios.cameraview.engine.mappers;
 
 
-import android.hardware.Camera;
+import android.support.test.filters.SmallTest;
+import android.support.test.runner.AndroidJUnit4;
 import android.util.Pair;
-
-import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.filters.SmallTest;
 
 import com.otaliastudios.cameraview.BaseTest;
 import com.otaliastudios.cameraview.controls.Facing;
@@ -22,7 +20,6 @@ import java.util.Set;
 import static android.hardware.camera2.CameraMetadata.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
 
 
 @RunWith(AndroidJUnit4.class)

@@ -3,7 +3,7 @@ package com.otaliastudios.cameraview.metering;
 import android.graphics.PointF;
 import android.graphics.RectF;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 public interface MeteringTransform<T> {
     @NonNull

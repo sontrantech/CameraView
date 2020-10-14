@@ -3,15 +3,14 @@ package com.otaliastudios.cameraview.overlay;
 
 import android.content.res.XmlResourceParser;
 import android.graphics.Canvas;
+import android.support.annotation.NonNull;
+import android.support.test.annotation.UiThreadTest;
+import android.support.test.filters.SmallTest;
+import android.support.test.runner.AndroidJUnit4;
 import android.util.AttributeSet;
 import android.util.Xml;
 import android.view.View;
 import android.view.ViewGroup;
-
-import androidx.annotation.NonNull;
-import androidx.test.annotation.UiThreadTest;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.filters.SmallTest;
 
 import com.otaliastudios.cameraview.BaseTest;
 
@@ -76,7 +75,8 @@ public class OverlayLayoutTest extends BaseTest {
         // Get the attribute set in the correct state: use a parser and move to START_TAG
         XmlResourceParser parser = getContext().getResources().getLayout(layout);
         //noinspection StatementWithEmptyBody
-        while (parser.next() != XmlResourceParser.START_TAG) {}
+        while (parser.next() != XmlResourceParser.START_TAG) {
+        }
         return Xml.asAttributeSet(parser);
     }
 

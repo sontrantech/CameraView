@@ -1,6 +1,6 @@
 package com.otaliastudios.cameraview.video.encoding;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 import java.nio.Buffer;
 import java.nio.ByteBuffer;

@@ -2,7 +2,7 @@ package com.otaliastudios.cameraview.internal;
 
 import com.otaliastudios.cameraview.size.Size;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 /**
  * This will only be used on low APIs or when GL surface is not available.

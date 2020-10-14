@@ -1,6 +1,6 @@
 package com.otaliastudios.cameraview.size;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 /**
  * A simple class representing a size, with width and height values.

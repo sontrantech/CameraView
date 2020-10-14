@@ -2,8 +2,8 @@ package com.otaliastudios.cameraview.internal;
 
 import android.content.Context;
 import android.hardware.SensorManager;
-import androidx.annotation.NonNull;
-import androidx.annotation.VisibleForTesting;
+import android.support.annotation.NonNull;
+import android.support.annotation.VisibleForTesting;
 
 import android.hardware.display.DisplayManager;
 import android.os.Build;

@@ -1,7 +1,7 @@
 package com.otaliastudios.cameraview.gesture;
 
 import android.os.Build;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 

@@ -7,7 +7,7 @@ import com.otaliastudios.cameraview.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 /**
  * Parses size selectors from XML attributes.

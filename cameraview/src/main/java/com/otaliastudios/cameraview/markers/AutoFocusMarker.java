@@ -4,7 +4,7 @@ import android.graphics.PointF;
 
 import com.otaliastudios.cameraview.CameraView;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 /**
  * A marker for the autofocus operations. Receives callback when focus starts,

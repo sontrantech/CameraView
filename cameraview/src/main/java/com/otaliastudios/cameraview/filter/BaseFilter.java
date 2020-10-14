@@ -1,7 +1,7 @@
 package com.otaliastudios.cameraview.filter;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.VisibleForTesting;
+import android.support.annotation.NonNull;
+import android.support.annotation.VisibleForTesting;
 
 import com.otaliastudios.cameraview.CameraLogger;
 import com.otaliastudios.cameraview.size.Size;

@@ -4,7 +4,7 @@ import android.content.res.TypedArray;
 
 import com.otaliastudios.cameraview.R;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 /**
  * Parses gestures from XML attributes.

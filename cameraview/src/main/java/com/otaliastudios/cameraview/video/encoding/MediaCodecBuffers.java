@@ -5,7 +5,7 @@ import android.os.Build;
 
 import java.nio.ByteBuffer;
 
-import androidx.annotation.RequiresApi;
+import android.support.annotation.RequiresApi;
 
 /**
  * A Wrapper to MediaCodec that facilitates the use of API-dependent get{Input/Output}Buffer

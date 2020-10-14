@@ -2,12 +2,10 @@ package com.otaliastudios.cameraview.size;
 
 
 import android.content.res.TypedArray;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.StyleableRes;
-import androidx.arch.core.util.Function;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.filters.SmallTest;
+import android.support.annotation.NonNull;
+import android.support.annotation.StyleableRes;
+import android.support.test.filters.SmallTest;
+import android.support.test.runner.AndroidJUnit4;
 
 import com.otaliastudios.cameraview.BaseTest;
 import com.otaliastudios.cameraview.R;
@@ -19,6 +17,7 @@ import org.junit.runner.RunWith;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

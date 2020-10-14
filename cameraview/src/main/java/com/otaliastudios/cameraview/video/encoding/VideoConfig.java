@@ -1,6 +1,6 @@
 package com.otaliastudios.cameraview.video.encoding;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 /**
  * Base video configuration to be passed as input to the constructor

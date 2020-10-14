@@ -1,6 +1,6 @@
 package com.otaliastudios.cameraview.filter;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 import com.otaliastudios.cameraview.filters.AutoFixFilter;
 import com.otaliastudios.cameraview.filters.BlackAndWhiteFilter;

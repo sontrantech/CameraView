@@ -2,7 +2,7 @@ package com.otaliastudios.cameraview.filters;
 
 import android.opengl.GLES20;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 import com.otaliastudios.cameraview.filter.BaseFilter;
 import com.otaliastudios.cameraview.filter.TwoParameterFilter;

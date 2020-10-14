@@ -2,7 +2,7 @@ package com.otaliastudios.cameraview.video.encoding;
 
 import android.opengl.EGLContext;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 import com.otaliastudios.cameraview.internal.Issue514Workaround;
 import com.otaliastudios.cameraview.overlay.Overlay;

@@ -5,13 +5,12 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.test.filters.SmallTest;
+import android.support.test.runner.AndroidJUnit4;
 
 import com.otaliastudios.cameraview.tools.Op;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.filters.SmallTest;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,10 +19,14 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
-import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 @RunWith(AndroidJUnit4.class)
 @SmallTest
@@ -48,7 +51,7 @@ public class CameraUtilsTest extends BaseTest {
     @NonNull
     private Op<String> writeAndReadString(@NonNull String data) {
         final File file = new File(getContext().getFilesDir(), "string.txt");
-        final byte[] bytes = data.getBytes(Charset.forName("UTF-8"));
+        final byte[] bytes = data.getBytes(StandardCharsets.UTF_8);
         final Op<String> result = new Op<>();
         final FileCallback callback = new FileCallback() {
             @Override
@@ -61,7 +64,7 @@ public class CameraUtilsTest extends BaseTest {
                         FileInputStream stream = new FileInputStream(file);
                         byte[] bytes = new byte[stream.available()];
                         stream.read(bytes);
-                        result.controller().end(new String(bytes, Charset.forName("UTF-8")));
+                        result.controller().end(new String(bytes, StandardCharsets.UTF_8));
                     } catch (IOException e) {
                         result.controller().end(null);
                     }
@@ -136,9 +139,9 @@ public class CameraUtilsTest extends BaseTest {
         assertEquals(100, w);
         assertEquals(200, h);
         assertEquals(color, other.getPixel(0, 0));
-        assertEquals(0, other.getPixel(0, h-1));
-        assertEquals(0, other.getPixel(w-1, 0));
-        assertEquals(0, other.getPixel(w-1, h-1));
+        assertEquals(0, other.getPixel(0, h - 1));
+        assertEquals(0, other.getPixel(w - 1, 0));
+        assertEquals(0, other.getPixel(w - 1, h - 1));
     }
 
     @Test
@@ -153,9 +156,9 @@ public class CameraUtilsTest extends BaseTest {
         assertEquals(100, w);
         assertEquals(200, h);
         assertEquals(color, other.getPixel(0, 0));
-        assertEquals(0, other.getPixel(0, h-1));
-        assertEquals(0, other.getPixel(w-1, 0));
-        assertEquals(0, other.getPixel(w-1, h-1));
+        assertEquals(0, other.getPixel(0, h - 1));
+        assertEquals(0, other.getPixel(w - 1, 0));
+        assertEquals(0, other.getPixel(w - 1, h - 1));
     }
 
 

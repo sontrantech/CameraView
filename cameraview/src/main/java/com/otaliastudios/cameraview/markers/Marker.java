@@ -6,8 +6,8 @@ import android.view.ViewGroup;
 
 import com.otaliastudios.cameraview.CameraView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 /**
  * A marker is an overlay over the {@link CameraView} preview, which should be drawn

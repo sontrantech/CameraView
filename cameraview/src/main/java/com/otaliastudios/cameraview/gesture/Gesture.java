@@ -3,7 +3,7 @@ package com.otaliastudios.cameraview.gesture;
 
 import com.otaliastudios.cameraview.CameraView;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 
 /**

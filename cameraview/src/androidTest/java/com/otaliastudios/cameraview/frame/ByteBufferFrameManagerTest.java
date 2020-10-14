@@ -2,9 +2,8 @@ package com.otaliastudios.cameraview.frame;
 
 
 import android.graphics.ImageFormat;
-
-import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.filters.SmallTest;
+import android.support.test.filters.SmallTest;
+import android.support.test.runner.AndroidJUnit4;
 
 import com.otaliastudios.cameraview.BaseTest;
 import com.otaliastudios.cameraview.engine.offset.Angles;

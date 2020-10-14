@@ -5,10 +5,10 @@ import android.media.MediaCodec;
 import android.media.MediaFormat;
 import android.os.Build;
 
-import androidx.annotation.CallSuper;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
+import android.support.annotation.CallSuper;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 
 import com.otaliastudios.cameraview.CameraLogger;
 import com.otaliastudios.cameraview.internal.WorkerHandler;

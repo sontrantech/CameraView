@@ -1,6 +1,5 @@
 package com.otaliastudios.cameraview.size;
 
-
 import org.junit.Test;
 
 import static org.junit.Assert.*;

@@ -1,7 +1,7 @@
 package com.otaliastudios.cameraview.size;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.VisibleForTesting;
+import android.support.annotation.NonNull;
+import android.support.annotation.VisibleForTesting;
 
 import java.util.HashMap;
 

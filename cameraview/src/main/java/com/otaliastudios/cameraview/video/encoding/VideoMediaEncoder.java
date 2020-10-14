@@ -4,8 +4,8 @@ import android.media.MediaCodec;
 import android.media.MediaCodecInfo;
 import android.media.MediaFormat;
 import android.os.Build;
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 
 import android.os.Bundle;
 import android.view.Surface;

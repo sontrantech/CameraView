@@ -4,8 +4,8 @@ import android.hardware.camera2.CaptureRequest;
 import android.hardware.camera2.TotalCaptureResult;
 import android.os.Build;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 
 /**
  * An {@link Action} that wraps another, and forces the completion

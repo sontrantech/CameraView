@@ -1,25 +1,12 @@
 package com.otaliastudios.cameraview.engine;
 
-import com.otaliastudios.cameraview.CameraLogger;
-import com.otaliastudios.cameraview.CameraOptions;
+import android.support.annotation.NonNull;
+import android.support.test.filters.LargeTest;
+import android.support.test.runner.AndroidJUnit4;
+
 import com.otaliastudios.cameraview.controls.Engine;
-import com.otaliastudios.cameraview.frame.Frame;
-import com.otaliastudios.cameraview.frame.FrameProcessor;
-import com.otaliastudios.cameraview.tools.Op;
-import com.otaliastudios.cameraview.tools.Retry;
-import com.otaliastudios.cameraview.tools.SdkExclude;
 
-import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import androidx.annotation.NonNull;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.filters.LargeTest;
-import androidx.test.filters.RequiresDevice;
-
-import java.util.Collection;
-
-import static org.junit.Assert.assertNotNull;
 
 /**
  * These tests work great on real devices, and are the only way to test actual CameraEngine

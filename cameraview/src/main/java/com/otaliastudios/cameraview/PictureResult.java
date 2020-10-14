@@ -10,8 +10,8 @@ import com.otaliastudios.cameraview.size.Size;
 
 import java.io.File;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 /**
  * Wraps the picture captured by {@link CameraView#takePicture()} or

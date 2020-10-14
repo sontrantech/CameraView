@@ -1,6 +1,6 @@
 package com.otaliastudios.cameraview.internal;
 
-import androidx.exifinterface.media.ExifInterface;
+import android.support.media.ExifInterface;
 
 /**
  * Super basic exif utilities.

@@ -24,9 +24,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.exifinterface.media.ExifInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
+import android.support.media.ExifInterface;
 
 /**
  * A {@link PictureResult} that uses standard APIs.

@@ -1,7 +1,7 @@
 package com.otaliastudios.cameraview.engine.offset;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.VisibleForTesting;
+import android.support.annotation.NonNull;
+import android.support.annotation.VisibleForTesting;
 
 import com.otaliastudios.cameraview.CameraLogger;
 import com.otaliastudios.cameraview.controls.Facing;

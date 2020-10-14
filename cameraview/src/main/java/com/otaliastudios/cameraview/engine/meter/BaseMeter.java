@@ -3,8 +3,8 @@ package com.otaliastudios.cameraview.engine.meter;
 import android.hardware.camera2.params.MeteringRectangle;
 import android.os.Build;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 
 import com.otaliastudios.cameraview.CameraLogger;
 import com.otaliastudios.cameraview.engine.action.ActionHolder;

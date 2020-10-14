@@ -8,8 +8,8 @@ import android.opengl.GLES11Ext;
 import android.opengl.GLES20;
 import android.view.Surface;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.VisibleForTesting;
+import android.support.annotation.NonNull;
+import android.support.annotation.VisibleForTesting;
 
 import com.otaliastudios.cameraview.CameraLogger;
 import com.otaliastudios.cameraview.internal.GlTextureDrawer;

@@ -5,8 +5,8 @@ import com.otaliastudios.cameraview.CameraView;
 import com.otaliastudios.cameraview.filter.Filter;
 import com.otaliastudios.cameraview.markers.AutoFocusMarker;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 /**
  * Gestures actions are actions over camera controls that can be mapped to certain gestures over

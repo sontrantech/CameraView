@@ -6,7 +6,7 @@ import com.otaliastudios.cameraview.CameraLogger;
 import com.otaliastudios.cameraview.controls.Engine;
 import com.otaliastudios.cameraview.size.Size;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 /**
  * A preview frame to be processed by {@link FrameProcessor}s.

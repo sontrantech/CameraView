@@ -4,7 +4,7 @@ import android.graphics.ImageFormat;
 import android.hardware.Camera;
 import android.media.CamcorderProfile;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 import com.otaliastudios.cameraview.CameraOptions;
 import com.otaliastudios.cameraview.controls.Facing;

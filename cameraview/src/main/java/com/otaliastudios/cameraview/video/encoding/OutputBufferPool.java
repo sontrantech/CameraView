@@ -5,7 +5,7 @@ import android.os.Build;
 
 import com.otaliastudios.cameraview.internal.Pool;
 
-import androidx.annotation.RequiresApi;
+import android.support.annotation.RequiresApi;
 
 /**
  * A simple {@link Pool(int, Factory)} implementation for output buffers.

@@ -2,10 +2,9 @@ package com.otaliastudios.cameraview.filter;
 
 
 import android.content.res.TypedArray;
-
-import androidx.annotation.NonNull;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.filters.SmallTest;
+import android.support.annotation.NonNull;
+import android.support.test.filters.SmallTest;
+import android.support.test.runner.AndroidJUnit4;
 
 import com.otaliastudios.cameraview.BaseTest;
 import com.otaliastudios.cameraview.R;
@@ -32,6 +31,7 @@ public class FilterParserTest extends BaseTest {
         assertNotNull(parser.getFilter());
         assertTrue(parser.getFilter() instanceof NoFilter);
     }
+
     @Test
     public void testConstructor() {
         TypedArray array = mock(TypedArray.class);

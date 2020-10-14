@@ -1,6 +1,6 @@
 package com.otaliastudios.cameraview.size;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -11,8 +11,8 @@ import android.os.Build;
 import android.util.Range;
 import android.util.Rational;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 
 import com.otaliastudios.cameraview.CameraOptions;
 import com.otaliastudios.cameraview.controls.Facing;

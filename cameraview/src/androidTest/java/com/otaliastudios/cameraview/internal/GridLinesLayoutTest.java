@@ -1,6 +1,11 @@
 package com.otaliastudios.cameraview.internal;
 
 
+import android.support.annotation.NonNull;
+import android.support.test.filters.MediumTest;
+import android.support.test.rule.ActivityTestRule;
+import android.support.test.runner.AndroidJUnit4;
+
 import com.otaliastudios.cameraview.BaseTest;
 import com.otaliastudios.cameraview.TestActivity;
 import com.otaliastudios.cameraview.controls.Grid;
@@ -8,18 +13,15 @@ import com.otaliastudios.cameraview.tools.Op;
 import com.otaliastudios.cameraview.tools.Retry;
 import com.otaliastudios.cameraview.tools.RetryRule;
 
-import androidx.annotation.NonNull;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.filters.MediumTest;
-import androidx.test.rule.ActivityTestRule;
-
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.mockito.Mockito.anyInt;
+import static org.mockito.Mockito.mock;
 
 @RunWith(AndroidJUnit4.class)
 @MediumTest

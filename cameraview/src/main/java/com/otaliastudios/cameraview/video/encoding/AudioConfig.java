@@ -2,7 +2,7 @@ package com.otaliastudios.cameraview.video.encoding;
 
 import android.media.AudioFormat;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 /**
  * Audio configuration to be passed as input to the constructor

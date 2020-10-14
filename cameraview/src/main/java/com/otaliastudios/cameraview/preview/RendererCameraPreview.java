@@ -1,6 +1,6 @@
 package com.otaliastudios.cameraview.preview;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 /**
  * Base interface for previews that support renderer frame callbacks,

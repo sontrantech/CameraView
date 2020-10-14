@@ -2,8 +2,8 @@ package com.otaliastudios.cameraview.picture;
 
 import android.hardware.Camera;
 
-import androidx.annotation.NonNull;
-import androidx.exifinterface.media.ExifInterface;
+import android.support.annotation.NonNull;
+import android.support.media.ExifInterface;
 
 import com.otaliastudios.cameraview.PictureResult;
 import com.otaliastudios.cameraview.engine.Camera1Engine;

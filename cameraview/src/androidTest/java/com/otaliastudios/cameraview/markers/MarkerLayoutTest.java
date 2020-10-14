@@ -4,6 +4,8 @@ package com.otaliastudios.cameraview.markers;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.PointF;
+import android.support.annotation.NonNull;
+import android.support.test.rule.ActivityTestRule;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -16,9 +18,6 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.Mockito;
-
-import androidx.annotation.NonNull;
-import androidx.test.rule.ActivityTestRule;
 
 import static org.mockito.ArgumentMatchers.anyFloat;
 import static org.mockito.Mockito.reset;
@@ -108,8 +107,11 @@ public class MarkerLayoutTest extends BaseTest {
                 // when(mockView.getWidth()).thenReturn(50);
                 // when(mockView.getHeight()).thenReturn(50);
                 AutoFocusMarker mockMarker = new AutoFocusMarker() {
-                    public void onAutoFocusStart(@NonNull AutoFocusTrigger trigger, @NonNull PointF point) { }
-                    public void onAutoFocusEnd(@NonNull AutoFocusTrigger trigger, boolean successful, @NonNull PointF point) { }
+                    public void onAutoFocusStart(@NonNull AutoFocusTrigger trigger, @NonNull PointF point) {
+                    }
+
+                    public void onAutoFocusEnd(@NonNull AutoFocusTrigger trigger, boolean successful, @NonNull PointF point) {
+                    }
 
                     @Override
                     public View onAttach(@NonNull Context context, @NonNull ViewGroup container) {

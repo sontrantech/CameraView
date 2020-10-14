@@ -14,10 +14,10 @@ import com.otaliastudios.cameraview.engine.mappers.Camera1Mapper;
 import com.otaliastudios.cameraview.internal.ExifHelper;
 import com.otaliastudios.cameraview.internal.WorkerHandler;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.WorkerThread;
-import androidx.exifinterface.media.ExifInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.WorkerThread;
+import android.support.media.ExifInterface;
 
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;

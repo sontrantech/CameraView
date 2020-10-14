@@ -13,9 +13,9 @@ import com.otaliastudios.cameraview.internal.DeviceEncoders;
 import com.otaliastudios.cameraview.internal.CamcorderProfiles;
 import com.otaliastudios.cameraview.size.Size;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 
 /**
  * A {@link VideoRecorder} that uses {@link android.media.MediaRecorder} APIs.
