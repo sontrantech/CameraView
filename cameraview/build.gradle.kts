@@ -9,6 +9,10 @@ plugins {
 }
 
 android {
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
     setCompileSdkVersion(property("compileSdkVersion") as Int)
     defaultConfig {
         setMinSdkVersion(property("minSdkVersion") as Int)
